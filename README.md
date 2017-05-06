@@ -2,7 +2,7 @@
 Recursive descent parser using c++
 
 <b>The language context free rules are</b>
-
+```
 Program --> Statement_list  
 Statement_list --> Statement_list Statement | Statement  
 Statement --> Var_statement | If_statement  
@@ -17,11 +17,11 @@ addop --> +|-
 term --> term mulop factor | factor  
 mulop --> *|/  
 factor --> num  
-
+```
 > **ID, num are terminal classes. The rest (int, void, else, <=, =..etc) of terminals are lexemes.**
 
 #### To be able to work using recursive descent, modified rules presented
-
+```
 Program --> Statement_list  
 Statement_list --> Statement Statement_list_dash  
 Statement_list_dash --> Statement Statement_list_dash | ε  
@@ -39,7 +39,7 @@ term --> factor term_dash
 term_dash --> mulop factor term_dash | ε  
 mulop --> *|/  
 factor --> num  
-
+```
 #### Input are tokens in specific format
 
 Take a look to Sample.hamada for example and here are some examples. These examples should be valid according to the language and produce success on parsing.
