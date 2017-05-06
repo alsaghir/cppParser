@@ -77,3 +77,7 @@ Example 2:
 <cs, ]>
 <semi, ;>
 ```
+
+#### More output
+
+light-output.cpp & extensiveOutput.cpp are completely commented but saved for sake of testing ONLY. They have to much outputs on each function calling and more.
