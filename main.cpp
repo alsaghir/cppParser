@@ -5,14 +5,13 @@
 
 using namespace std;
 
-// ifstream is used for reading files
-// We'll read from a file called Sample.dat
-
+//The token scanned will have two parts
 struct Token {
     string classToken;
     string lexemeToken;
 };
 
+//Read all the tokens and put all of them in array of type Token to start parsing on them
 vector<Token> getTokens(ifstream & inf) {
     Token theToken;
     vector<Token> arrayOfTokens;
@@ -37,6 +36,12 @@ vector<Token> getTokens(ifstream & inf) {
     return arrayOfTokens;
 }
 
+//reading from Sample.hamada
+ifstream inf("Sample.hamada", ifstream::binary);
+vector<Token> allTokens = getTokens(inf);
+int cindex = 0;
+
+//Functions of the rules
 bool program();
 bool statement_list();
 bool statement();
@@ -56,11 +61,6 @@ bool mulop();
 bool factor();
 bool terminalLexeme(string expected);
 bool terminalClass(string expected);
-
-
-ifstream inf("Sample.hamada", ifstream::binary);
-vector<Token> allTokens = getTokens(inf);
-int cindex = 0;
 
 bool program(){
     return cindex >= allTokens.size() ?  false : statement_list();
@@ -170,11 +170,13 @@ bool terminalClass(string expected) {
 
 int main() {
 
+    //Apply the parsing and output the result
     if (program())
         cout << endl << "parsing is success >> 1" << endl << endl;
     else
         cout << endl << "parsing is fail >> 0" << endl << endl;
 
+    //More checking
     cout << "Index number is = " << cindex << endl;
     cout << "Tokens number is = " << allTokens.size() << endl;
 
